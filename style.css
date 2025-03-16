@@ -312,6 +312,7 @@ button {
 /* Contenedor principal del carrusel */
 .header-carousel {
     max-width: 800px;
+    height: 50px;
     width: 100%;
     background-color: #e2e1e1;
     border: 0.5px solid white;
@@ -320,7 +321,8 @@ button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden; /* Elimina cualquier scroll */
     max-height: 400px; /* Asegura que el contenedor no exceda esta altura */
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+
 }
 
 
@@ -330,11 +332,12 @@ button {
     transition: transform 0.5s ease-in-out; /* Transición suave */
     width: 100%; /* Asegura que el contenedor se alinee correctamente */
     position: relative; /* Mantiene el texto dentro del contenedor */
+    padding-top: 15px;
 }
 
 /* Palabras individuales */
 .carousel-text {
-    font-size: 16px; /* Tamaño del texto */
+    font-size: 20px; /* Tamaño del texto */
     color: #007bff; /* Color principal */
     font-weight: bold; /* Texto en negrita */
     min-width: 100%; /* Cada palabra ocupa exactamente el ancho del contenedor visible */

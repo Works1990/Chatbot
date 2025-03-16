@@ -1,3 +1,4 @@
+require('dotenv').config(); // Carga las variables de entorno desde .env
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -8,10 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://aguirre3590:lhTLh5Vaj3dYxRGE@app.0u5sp.mongodb.net/tienda?retryWrites=true&w=majority&appName=App', {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+    useUnifiedTopology: true,
+  });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Error de conexión a MongoDB:'));
@@ -39,8 +40,8 @@ app.use(express.static(path.join(__dirname)));
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'aguirre3590@gmail.com',
-        pass: 'tjbmofovofdwkioq'
+        user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS,
     }
 });
 

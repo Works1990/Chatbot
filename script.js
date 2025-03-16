@@ -605,7 +605,7 @@ function moveText() {
 
 // Cambia el texto cada 3 segundos
 if (texts.length > 0) {
-    setInterval(moveText, 3000);
+    setInterval(moveText, 4000);
 } else {
     console.warn("No hay textos para el carrusel.");
 }
