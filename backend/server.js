@@ -151,7 +151,7 @@ app.post('/chatbot', async (req, res) => {
     }
 });
 
-// Enviar index.html para cualquier otra ruta
+// Enviar index.html para cualquier otra rutas
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
