@@ -132,13 +132,13 @@ function getBotResponse(message, data = null) {
                 addOptions(
                     data.reply,
                     "subservicios de ",
-                    "Elija un servicio para continuar:"
+                    "Elige un servicio para continuar:"
                 );
             } else if (message.startsWith("subservicios de ")) {
                 addOptions(
                     data.reply,
                     "trabajos de ",
-                    "Elija un subservicio que desea explorar:"
+                    "Elige un subservicio que desea explorar:"
                 );
             } else if (message.startsWith("trabajos de ")) {
                 addMessage("Selecciona los trabajos de tu preferencia:", "bot");
