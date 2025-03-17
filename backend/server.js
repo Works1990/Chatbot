@@ -1,4 +1,4 @@
-require('dotenv').config(); // Carga las variables de entorno desde .env
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -38,10 +38,9 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS,
+        pass: process.env.GMAIL_PASS,
     }
 });
-
 
 app.post('/chatbot', async (req, res) => {
     const message = req.body.message.trim().toLowerCase();
@@ -150,9 +149,25 @@ app.post('/chatbot', async (req, res) => {
     }
 });
 
-// Enviar index.html para cualquier otra rutas
+// Enviar index.html para cualquier otra ruta
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000/chatbot'; // Obtener la URL del backend
+    const html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Chatbot</title>
+            <script>
+                window.BACKEND_URL = "${backendUrl}"; // Pasar la URL al frontend
+            </script>
+        </head>
+        <body>
+            <div id="app"></div>
+            <script src="script.js"></script>
+        </body>
+        </html>
+    `;
+    res.send(html);
 });
 
 const PORT = process.env.PORT || 5000;
