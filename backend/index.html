@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>    
+    </head>       
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -24,21 +24,25 @@
             <span class="carousel-text">Creatividad</span>
         </div>
     </div>
-    <div class="chat-container">     
+    <div class="chat-container">        
         <div class="messages" id="messages"></div>
     </div>
     <div class="input-container-logo">
         <div class="logo">
-                    <button id="logo-facebook"><i class="fab fa-facebook"></i></button>
-                    <button id="logo-twitter"><i class="fab fa-twitter"></i></button>
-                    <button id="logo-instagram"><i class="fab fa-instagram"></i></button>
-                    <button id="logo-linkedin"><i class="fab fa-linkedin"></i></button>
-                    <button id="logo-youtube"><i class="fab fa-youtube"></i></button>
-                    <button id="logo-tiktok"><i class="fab fa-tiktok"></i></button>
+            <button id="logo-facebook"><i class="fab fa-facebook"></i></button>
+            <button id="logo-twitter"><i class="fab fa-twitter"></i></button>
+            <button id="logo-instagram"><i class="fab fa-instagram"></i></button>
+            <button id="logo-linkedin"><i class="fab fa-linkedin"></i></button>
+            <button id="logo-youtube"><i class="fab fa-youtube"></i></button>
+            <button id="logo-tiktok"><i class="fab fa-tiktok"></i></button>
         </div>
     </div>
     <label id="locationLabel" style="display: none;">Ubicación seleccionada: Ninguna</label>
     <div id="coordinatesLabel" style="display: none;">Coordenadas: No disponibles</div>
+
+    <script>
+        window.BACKEND_URL = "http://localhost:5000/chatbot"; // Reemplaza con la URL correcta
+    </script>
     <script src="script.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGNNjsIxeUjXQ5cFi-a_sFxFNS5JwR2xg&libraries=places&language=es"></script>
 </body>
