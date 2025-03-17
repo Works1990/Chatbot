@@ -45,6 +45,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+
 app.post('/chatbot', async (req, res) => {
     const message = req.body.message.trim().toLowerCase();
     const data = req.body.data || {};
