@@ -206,8 +206,8 @@ function showSuccessModal() {
 
     // Mensaje en el modal
     const message = document.createElement("p");
-    message.innerText = "¡Su solicitud ha sido registrado exitosamente!" + 
-                        "\nEn breve lo contactaremos" +
+    message.innerText = "¡Solicitud registrada exitosamente!" + 
+                        "\nCaso asignado correctamente " +
                         "\nRevise su correo electrónico" // Texto del modal
 
     // Botón para cerrar el modal
@@ -342,45 +342,79 @@ function showWorkCheckboxes(works) {
         confirmButton.textContent = "Contratar servicios";
 
         confirmButton.onclick = () => {
-            // Captura todos los checkboxes seleccionados y verifica los índices
-            const selectedWorks = Array.from(checkboxContainer.querySelectorAll('input[type="checkbox"]:checked'))
-                .map(checkbox => parseInt(checkbox.value)); // Capturar índices válidos
+            Swal.fire({
+                title: "",
+                text: "¿Deseas contratar estos servicios?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Sí, contratar",
+                cancelButtonText: "Cancelar",
+                customClass: {
+                    popup: 'swal-popup-small',
+                    title: 'swal-title-small',
+                    content: 'swal-content-small'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Captura todos los checkboxes seleccionados y verifica los índices
+                    const selectedWorks = Array.from(checkboxContainer.querySelectorAll('input[type="checkbox"]:checked'))
+                        .map(checkbox => parseInt(checkbox.value)); // Capturar índices válidos
 
-            console.log("Índices seleccionados (frontend):", selectedWorks); // Confirmar los índices en consola
+                    console.log("Índices seleccionados (frontend):", selectedWorks); // Confirmar los índices en consola
 
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-            const comment = document.getElementById("comment").value;
+                    const email = document.getElementById("email").value;
+                    const phone = document.getElementById("phone").value;
+                    const comment = document.getElementById("comment").value;
 
-            // Verificar que se haya seleccionado una ubicación
-            if (!address || !lat || !lng) {
-                addMessage("Por favor, selecciona tu ubicación en el mapa.", "bot");
-                return;
-            }
+                    // Verificar que se haya seleccionado una ubicación
+                    if (!address || !lat || !lng) {
+                        addMessage("Por favor, selecciona tu ubicación en el mapa.", "bot");
+                        return;
+                    }
 
-            if (selectedWorks.length > 0 && email && phone) {
-                const data = {
-                    email: email,
-                    phone: phone,
-                    comment: comment,
-                    address: address, // Usar la variable address
-                    lat: lat,         // Usar la variable lat
-                    lng: lng          // Usar la variable lng
-                };
+                    if (selectedWorks.length > 0 && email && phone) {
+                        const data = {
+                            email: email,
+                            phone: phone,
+                            comment: comment,
+                            address: address, // Usar la variable address
+                            lat: lat,         // Usar la variable lat
+                            lng: lng          // Usar la variable lng
+                        };
 
-                sendSelectedWorks(selectedWorks, data);
+                        sendSelectedWorks(selectedWorks, data);
 
-                // Deshabilitar inputs y botones después de enviar
-                disableInputsAfterSend();
-            } else {
-                addMessage("Por favor, completa todos los campos.", "bot");
-            }
+                        // Deshabilitar inputs y botones después de enviar
+                        disableInputsAfterSend();
+                    } else {
+                        addMessage("Por favor, completa todos los campos.", "bot");
+                    }
+                }
+            });
         };
 
         // Botón de cancelar
         const cancelButton = document.createElement("button");
         cancelButton.textContent = "Cancelar";
-        cancelButton.onclick = resetChat;
+        cancelButton.onclick = () => {
+            Swal.fire({
+                title: "",
+                text: "¿Deseas cancelar?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, cancelar",
+                cancelButtonText: "No, continuar",
+                customClass: {
+                    popup: 'swal-popup-small',
+                    title: 'swal-title-small',
+                    content: 'swal-content-small'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    resetChat();
+                }
+            });
+        };
 
         // Contenedor para los inputs
         const inputContainer = document.createElement("div");

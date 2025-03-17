@@ -19,7 +19,7 @@ body {
     padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-    min-height: 250px;
+    max-height: 400px;
     margin-bottom: 20px;
 }
 
@@ -210,7 +210,7 @@ button:hover {
     .chat-container {
         max-width: 100%;
         margin: 0;
-        height: 80vh;
+        height: 70vh;
     }
 
     .input-container {
@@ -371,4 +371,16 @@ button:hover {
     .carousel-text {
         font-size: 16px; /* Texto más pequeño para dispositivos muy pequeños */
     }
+}
+.swal-popup-small {
+    font-size: 14px !important; /* Ajusta el tamaño general del texto */
+    width: 300px !important; /* Ajusta el ancho del cuadro de diálogo */
+}
+
+.swal-title-small {
+    font-size: 18px !important; /* Ajusta el tamaño del título */
+}
+
+.swal-content-small {
+    font-size: 14px !important; /* Ajusta el tamaño del contenido */
 }
