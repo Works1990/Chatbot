@@ -151,7 +151,7 @@ app.post('/chatbot', async (req, res) => {
 
 // Enviar index.html para cualquier otra ruta
 app.get('*', (req, res) => {
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000/chatbot'; // Obtener la URL del backend
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:7000/chatbot'; // Obtener la URL del backend
     const html = `
         <!DOCTYPE html>
         <html>
