@@ -151,7 +151,7 @@ app.post('/chatbot', async (req, res) => {
 
 // Enviar index.html para cualquier otra ruta
 app.get('*', (req, res) => {
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:7000/chatbot'; // Obtener la URL del backend
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000/chatbot'; // Obtener la URL del backend
     const html = `
         <!DOCTYPE html>
         <html>
@@ -170,6 +170,5 @@ app.get('*', (req, res) => {
     res.send(html);
 });
 
-
-const PORT = process.env.PORT || 7000;
-app.listen(PORT, '0.0.0.0', () => console.log(`Servidor corriendo en puerto ${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
