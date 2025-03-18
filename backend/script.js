@@ -113,12 +113,12 @@ let emailSentHandled = false; // Variable global para evitar duplicaciones
 
 function getBotResponse(message, data = null) {
     console.log("Mensaje enviado al backend:", message);
-    fetch(BACKEND_URL, {
+    fetch(window.BACKEND_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message, data })
     })
-    
+
     .then(res => {
         if (!res.ok) {
             throw new Error(`Error en la respuesta del servidor: ${res.status}`);
